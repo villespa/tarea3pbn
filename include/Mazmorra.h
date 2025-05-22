@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include "Enemigo.h"
+#include "Jugador.h"
+#include "Otros.h"
 
 class Mazmorra {
 private:
@@ -24,12 +26,8 @@ public:
     int getFilas() const;
     int getColumnas() const;
 
-    std::vector<Enemigo>& getEnemigos();
-    void agregarEnemigo(const Enemigo& enemigo);
-    void eliminarEnemigoEn(int x, int y);
-
-
-    // Agrega aquí otros métodos como mover enemigos, aplicar daño, etc.
+    std::pair<int, int> posicionInicialJugador(int& x, int& y);
+    void moverJugador(Jugador& jugador, std::string direccion);
 };
 
 #endif

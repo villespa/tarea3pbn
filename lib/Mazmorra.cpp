@@ -1,12 +1,14 @@
 #include "../include/Mazmorra.h"
+#include "../include/Jugador.h"
 
 Mazmorra::Mazmorra(int filas, int columnas, const std::vector<std::vector<char>>& mapa,
                    const std::vector<Enemigo>& enemigos)
     : filas(filas), columnas(columnas), mapa(mapa), enemigos(enemigos) {}
 
 void Mazmorra::mostrarMapa() const {
-    for (const auto& fila : mapa) {
-        for (char c : fila) {
+    for (int i = 0; i < filas; ++i) {
+        for (int j = 0; j < columnas; ++j) {
+            char c = mapa[i][j];
             if (c == 'L' || c == 'Z') {
                 std::cout << "\033[1;4;92m" << c << "\033[0m "; // Color verde
             } 
@@ -40,20 +42,44 @@ int Mazmorra::getColumnas() const {
     return columnas;
 }
 
-std::vector<Enemigo>& Mazmorra::getEnemigos() {
-    return enemigos;
-}
-
-void Mazmorra::agregarEnemigo(const Enemigo& enemigo) {
-    enemigos.push_back(enemigo);
-}
-
-void Mazmorra::eliminarEnemigoEn(int x, int y) {
-    for (auto it = enemigos.begin(); it != enemigos.end(); ++it) {
-        if (it->getX() == x && it->getY() == y) {
-            enemigos.erase(it);
-            break;
+std::pair<int,int> Mazmorra::posicionInicialJugador(int& x, int& y) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            if (mapa[i][j] == 'L') {
+                x = i;
+                y = j;
+                return std::make_pair(x, y);
+            }
         }
     }
 }
 
+void Mazmorra::moverJugador(Jugador& jugador, std::string direccion) {
+    int nuevoX = jugador.getX();
+    int nuevoY = jugador.getY();
+    std::string direccionJugador = jugador.getDireccion();
+    
+    if (direccionJugador != direccion) {
+        jugador.setDireccion(direccion);
+        return;
+    }
+        
+
+    if (direccion == "arriba") {
+        nuevoX--;
+
+    } 
+    else if (direccion == "abajo") {
+        nuevoX++;
+    } 
+    else if (direccion == "izquierda") {
+        nuevoY--;
+    } 
+    else if (direccion == "derecha") {
+        nuevoY++;
+    } 
+    else {
+        std::cout << "Dirección no válida." << std::endl;
+        return;
+    }
+}

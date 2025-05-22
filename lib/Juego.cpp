@@ -67,7 +67,7 @@ Mazmorra Juego::elegirMazmorra() {
 }
 
 
-int Juego::iniciarJuego() {
+std::pair<Jugador, Mazmorra> Juego::iniciarJuego() {
     Jugador jugador(0, 0);
     Otros otros;
 
@@ -82,6 +82,44 @@ int Juego::iniciarJuego() {
     SalaJefe salaJefeElegida = otros.cargarMazmorrasCSV("/home/pbn/tarea3pbn/mazmorras.csv").second[this -> getSeleccionMazmorra() - 1];
 
     mazmorraElegida.mostrarMapa();
+
+    return std::make_pair(jugador, mazmorraElegida);
+}
+
+void mostrarInstrucciones() {
+    std::cout << "\n=== CONTROLES ===" << std::endl;
+    std::cout << "w = arriba" << std::endl;
+    std::cout << "s = abajo" << std::endl;
+    std::cout << "a = izquierda" << std::endl;
+    std::cout << "d = derecha" << std::endl;
+    std::cout << "x = atacar" << std::endl;
+    std::cout << "z = usar habilidad" << std::endl;
+    std::cout << "c = interactuar" << std::endl;
+    std::cout << "p = salir del juego" << std::endl;
+    std::cout << "=================" << std::endl;
+}
+
+void mostrarEstado(Jugador& jugador) {
+    std::cout << "\n=== ESTADO ===" << std::endl;
+    std::cout << "Posición: (" << jugador.getX() << ", " << jugador.getY() << ")" << std::endl;
+    std::cout << "Vida: " << jugador.getVida() << std::endl;
+    std::cout << "Dirección: " << jugador.getDireccion() << std::endl;
+    std::cout << "==============" << std::endl;
+}
+
+int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
+    int contador = 0;
+    Jugador jugador(0, 0);
+
+    while (jugador.getVida() > 0) {
+        mostrarInstrucciones();
+        char instruccion;
+        mostrarEstado(jugador);
+        mazmorraElegida.mostrarMapa();
+        std::cout << "Ingrese una instrucción: ";
+        std::cin >> instruccion;
+    }
+
 
     return 0;
 }

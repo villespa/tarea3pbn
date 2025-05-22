@@ -28,8 +28,9 @@ public:
 
     Mazmorra  elegirMazmorra();
     void mostrarMazmorras(int numMazmorra);
-    int  elegirHabilidad();
-    int  iniciarJuego();
+    int elegirHabilidad();
+    std::pair<Jugador, Mazmorra>  iniciarJuego();
+    int mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida);    
 
     // setters
 
@@ -40,6 +41,7 @@ public:
     long unsigned int getSeleccionMazmorra();
     std::string getDungeonsPath();
     std::string getEnemiesPath();
+
 
 };
 

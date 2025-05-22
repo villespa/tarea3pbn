@@ -28,6 +28,7 @@ public:
     int getRango();
     int getFrecuenciaAtaque();
     Enemigo(int x, int y, std::vector<std::pair<int,int>> patronMoviemiento, int vida, int dano, int rango, int frecuenciaAtaque);
+
 };
 
 #endif

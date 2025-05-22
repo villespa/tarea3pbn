@@ -13,6 +13,7 @@
 #include "include/Juego.h"
 
 
+
 int main() {
 
     Juego juego;
@@ -27,5 +28,7 @@ int main() {
     std::cout << "Ruta de mazmorras: " << juego.getDungeonsPath() << std::endl;
     std::cout << "Ruta de enemigos: " << juego.getEnemiesPath() << std::endl;
 
-    juego.iniciarJuego();
+    std::pair<Jugador, Mazmorra> jugadorMazmorra = juego.iniciarJuego();
+
+    juego.mainLoop(jugadorMazmorra.first, jugadorMazmorra.second);
 }

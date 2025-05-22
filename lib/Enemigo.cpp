@@ -24,4 +24,3 @@ Enemigo::Enemigo(int x, int y, std::vector<std::pair<int,int>> patronMoviemiento
 }
 
 
-

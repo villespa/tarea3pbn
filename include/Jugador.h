@@ -30,17 +30,32 @@ public:
     //constructores
     Jugador();
     Jugador(int x, int y);
-
+    
 
     //setters
     void setX(int x);
     void setY(int y);
     void cambiarVida(int vida);
+    void setDireccion(std::string direccion);
 
     //getters
     int getX();
     int getY();
     int getVida();
+    std::string getDireccion();
+
+    //acciones
+    void mover();
+    bool puedeMoverse(char elemento);
+    void usarLlave();
+    void usarBomba();
+    void usarHabilidad();
+    void atacar();
+    void recibirDano(int dano);
+    void abrirCofre();
+    void abrirPuerta();
+    void entrarSalaJefe();
+
 
 };
 
