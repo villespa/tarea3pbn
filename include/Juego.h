@@ -33,8 +33,8 @@ public:
 
     // setters
 
-    void setDungeonsPath(std::string dungeonsPath);
-    void setEnemiesPath(std::string enemiesPath);
+    void setDungeonsPath();
+    void setEnemiesPath();
 
     // getters
     long unsigned int getSeleccionMazmorra();

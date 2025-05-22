@@ -13,10 +13,21 @@ long unsigned int Juego::getSeleccionMazmorra() {
     return seleccionMazmorra;
 }
 
-void Juego::setDungeonsPath(std::string dungeonsPath) {
+void Juego::setDungeonsPath() {
+
+    std::string dungeonsPath;
+    std::cout << "ingrese el camino del csv de mazmorras:" << std::endl;
+    // std::cin >> dungeonsPath;
+    dungeonsPath = "/home/pbn/tarea3pbn/mazmorras.csv";
+
     this->dungeonsPath = dungeonsPath;
 }
-void Juego::setEnemiesPath(std::string enemiesPath) {
+void Juego::setEnemiesPath() {
+    std::string enemiesPath;
+    std::cout << "ingrese el camino del csv de enemigos:" << std::endl;
+    // std::cin >> enemiesPath;
+    enemiesPath = "/home/pbn/tarea3pbn/enemigos.csv";
+
     this->enemiesPath = enemiesPath;
 }
 std::string Juego::getDungeonsPath() {
@@ -56,8 +67,6 @@ Mazmorra Juego::elegirMazmorra() {
 }
 
 
-
-
 int Juego::iniciarJuego() {
     Jugador jugador(0, 0);
     Otros otros;
@@ -65,29 +74,10 @@ int Juego::iniciarJuego() {
     std::cout << "Bienvenido al juego!" << std::endl;
     std::cout << "Jugador creado en la posición inicial (0, 0)." << std::endl;
 
-    std::string mazmorraPath;
-    //std::cout << "Introduce la ruta del archivo de mazmorras: " << std::endl;
-    //std::cin >> mazmorraPath;
-    mazmorraPath = "/home/pbn/tarea3pbn/mazmorras.csv";
-
-    std::string enemigosPath;
-    //std::cout << "Introduce la ruta del archivo de enemigos: " << std::endl;
-    //std::cin >> enemigosPath;
-    enemigosPath = "/home/pbn/tarea3pbn/enemigos.csv";
-
-    otros.mostrarMazmorras(otros.cargarMazmorrasCSV(mazmorraPath).first);
+    otros.mostrarMazmorras(otros.cargarMazmorrasCSV(this -> getDungeonsPath()).first);
 
     Mazmorra mazmorraElegida = elegirMazmorra();
     std::vector<Mazmorra> vectorMazmorras = otros.cargarMazmorrasCSV("/home/pbn/tarea3pbn/mazmorras.csv").first;
-    
-    // int idxMazmorraElegida = 0;
-    // for (size_t i = 0; i < vectorMazmorras.size(); ++i) {
-    //     if (vectorMazmorras[i].getFilas() == mazmorraElegida.getFilas() && 
-    //         vectorMazmorras[i].getColumnas() == mazmorraElegida.getColumnas()) {
-    //         idxMazmorraElegida = i;
-    //         break;
-    //     }
-    // }
 
     SalaJefe salaJefeElegida = otros.cargarMazmorrasCSV("/home/pbn/tarea3pbn/mazmorras.csv").second[this -> getSeleccionMazmorra() - 1];
 
