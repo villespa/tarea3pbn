@@ -24,9 +24,32 @@ std::string Jugador::getDireccion() {
     return direccion;
 }
 
-Jugador::Jugador(int x, int y) : x(x), y(y), vida(100), dano(20), direccion("derecha") {
-    this->x = x;
-    this->y = y;
+Jugador::Jugador() : x(0), y(0), vida(100), dano(20), direccion("arriba") {
+    llaves = 0;
+    llavesJefe = 0;
+    pasos = 0;
+    cofresAbiertos = 0;
+    puertasAbiertas = 0;
+    EnemigosDerrotados = 0;
+    recibiendoDano = false;
+    usandoHabilidad = false;
+    atacando = false;
+    enSalaJefe = false;
+    haGanado = false;
+}
+
+Jugador::Jugador(int x, int y) : x(x), y(y), vida(100), dano(20), direccion("arriba") {
+    llaves = 0;
+    llavesJefe = 0;
+    pasos = 0;
+    cofresAbiertos = 0;
+    puertasAbiertas = 0;
+    EnemigosDerrotados = 0;
+    recibiendoDano = false;
+    usandoHabilidad = false;
+    atacando = false;
+    enSalaJefe = false;
+    haGanado = false;
 }
 
 void Jugador::setDireccion(std::string direccion) {

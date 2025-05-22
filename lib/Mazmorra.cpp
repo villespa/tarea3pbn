@@ -42,13 +42,11 @@ int Mazmorra::getColumnas() const {
     return columnas;
 }
 
-std::pair<int,int> Mazmorra::posicionInicialJugador(int& x, int& y) {
+std::pair<int,int> Mazmorra::posicionInicialJugador() {
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
             if (mapa[i][j] == 'L') {
-                x = i;
-                y = j;
-                return std::make_pair(x, y);
+                return std::make_pair(i, j); // Retorna la posición inicial del jugador
             }
         }
     }

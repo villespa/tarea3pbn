@@ -110,6 +110,10 @@ void mostrarEstado(Jugador& jugador) {
 int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
     int contador = 0;  
 
+    std::pair<int, int> posicionDeL = mazmorraElegida.posicionInicialJugador();
+    jugador.setX(posicionDeL.second);
+    jugador.setY(posicionDeL.first);
+
     while (jugador.getVida() > 0) {
         mostrarInstrucciones();
         char instruccion;
@@ -118,6 +122,7 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
         std::cout << "Ingrese una instrucción: ";
         std::cout << "Contador: " << contador << std::endl;
         std::cin >> instruccion;
+        
     }
 
 
