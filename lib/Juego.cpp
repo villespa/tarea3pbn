@@ -108,8 +108,7 @@ void mostrarEstado(Jugador& jugador) {
 }
 
 int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
-    int contador = 0;
-    Jugador jugador(0, 0);
+    int contador = 0;  
 
     while (jugador.getVida() > 0) {
         mostrarInstrucciones();
@@ -117,6 +116,7 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
         mostrarEstado(jugador);
         mazmorraElegida.mostrarMapa();
         std::cout << "Ingrese una instrucción: ";
+        std::cout << "Contador: " << contador << std::endl;
         std::cin >> instruccion;
     }
 

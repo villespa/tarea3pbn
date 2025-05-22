@@ -52,6 +52,7 @@ std::pair<int,int> Mazmorra::posicionInicialJugador(int& x, int& y) {
             }
         }
     }
+    return std::make_pair(0, 0); // Si no se encuentra la posición inicial
 }
 
 void Mazmorra::moverJugador(Jugador& jugador, std::string direccion) {

@@ -24,9 +24,7 @@ std::string Jugador::getDireccion() {
     return direccion;
 }
 
-Jugador::Jugador() : x(0), y(0), vida(100), dano(20){}
-
-Jugador::Jugador(int x, int y) {
+Jugador::Jugador(int x, int y) : x(x), y(y), vida(100), dano(20), direccion("derecha") {
     this->x = x;
     this->y = y;
 }
@@ -45,8 +43,6 @@ void Jugador::mover() {
     } else if (direccion == "derecha") {
         x++;
     }
-
-    
 
 }
 

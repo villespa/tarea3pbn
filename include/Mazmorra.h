@@ -5,7 +5,6 @@
 #include <iostream>
 #include "Enemigo.h"
 #include "Jugador.h"
-#include "Otros.h"
 
 class Mazmorra {
 private:
