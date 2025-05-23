@@ -19,7 +19,7 @@ public:
 
     void mostrarMapa() const;
 
-    char obtenerElemento(int x, int y) const;
+    char obtenerElemento(int x, int y);
     void modificarElemento(int x, int y, char nuevoValor);
 
     int getFilas() const;

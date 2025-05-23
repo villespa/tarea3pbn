@@ -117,7 +117,7 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
         mostrarEstado(jugador);
         mazmorraElegida.mostrarMapa();
         std::cout << "Ingrese una instrucción: ";
-        std::cout << "Contador: " << contador << std::endl;
+        std::cout << "turno # " << contador << std::endl;
         std::cin >> instruccion;
         switch (instruccion) 
         {
@@ -127,9 +127,10 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
             std::cout << "Futura posición: (" << futuraPos.first << ", " << futuraPos.second << ")" << std::endl;
             
             // 
-            // // la relacion entre direccion y cambio de posicion esta mal, rara  
-            // // la relacion entre direccion y cambio de posicion esta mal, rara  
+            // // la relacion entre direccion y cambio de posicion esta srara  
+            // // la relacion entre direccion y cambio de posicion esta rara  
             // 
+
             if (jugador.puedeMoverse(mazmorraElegida, futuraPos.first, futuraPos.second)) {
                 jugador.mover();
                 std::cout << "Jugador se ha movido a la posición: (" << jugador.getX() << ", " << jugador.getY() << ")" << std::endl;
@@ -140,11 +141,23 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
             }
             break;
         }
+
+        case 'd': {
+            std::string nuevaDireccion;
+            std::cout << "Ingrese la nueva dirección (arriba, abajo, izquierda, derecha): ";
+            std::cin >> nuevaDireccion;
+            jugador.setDireccion(nuevaDireccion);
+            std::cout << "Dirección cambiada a: " << jugador.getDireccion() << std::endl;
+            break;
+        }
+
         default:
             std::cout << "Instrucción no válida. Intente de nuevo." << std::endl;
             break;
         }
         
+
+        contador++;
     }
 
 
