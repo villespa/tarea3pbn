@@ -25,8 +25,9 @@ public:
     int getFilas() const;
     int getColumnas() const;
 
+    std::pair<int, int> dondeSeMueveJugador(Jugador& jugador);
+
     std::pair<int, int> posicionInicialJugador();
-    void moverJugador(Jugador& jugador, std::string direccion);
 };
 
 #endif

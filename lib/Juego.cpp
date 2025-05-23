@@ -88,11 +88,8 @@ std::pair<Jugador, Mazmorra> Juego::iniciarJuego() {
 
 void mostrarInstrucciones() {
     std::cout << "\n=== CONTROLES ===" << std::endl;
-    std::cout << "w = arriba" << std::endl;
-    std::cout << "s = abajo" << std::endl;
-    std::cout << "a = izquierda" << std::endl;
-    std::cout << "d = derecha" << std::endl;
-    std::cout << "x = atacar" << std::endl;
+    std::cout << "m = mover" << std::endl;
+    std::cout << "d = cambiar direccion" << std::endl;
     std::cout << "z = usar habilidad" << std::endl;
     std::cout << "c = interactuar" << std::endl;
     std::cout << "p = salir del juego" << std::endl;
@@ -122,6 +119,31 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
         std::cout << "Ingrese una instrucción: ";
         std::cout << "Contador: " << contador << std::endl;
         std::cin >> instruccion;
+        switch (instruccion) 
+        {
+        case 'm': {
+            std::cout << "se va a mover en la dirección: " << "\033[1;33m" << jugador.getDireccion() << "\033[0m " << std::endl;
+            std::pair<int, int> futuraPos = mazmorraElegida.dondeSeMueveJugador(jugador);
+            std::cout << "Futura posición: (" << futuraPos.first << ", " << futuraPos.second << ")" << std::endl;
+            
+            // 
+            // // la relacion entre direccion y cambio de posicion esta mal, rara  
+            // // la relacion entre direccion y cambio de posicion esta mal, rara  
+            // 
+            if (jugador.puedeMoverse(mazmorraElegida, futuraPos.first, futuraPos.second)) {
+                jugador.mover();
+                std::cout << "Jugador se ha movido a la posición: (" << jugador.getX() << ", " << jugador.getY() << ")" << std::endl;
+            } else {
+                std::cout << "Movimiento no permitido." << std::endl;
+                break;
+        
+            }
+            break;
+        }
+        default:
+            std::cout << "Instrucción no válida. Intente de nuevo." << std::endl;
+            break;
+        }
         
     }
 

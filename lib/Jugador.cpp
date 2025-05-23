@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "../include/Jugador.h"
+#include "../include/Mazmorra.h"
 
 void Jugador::setX(int x) {
     this->x = x;
@@ -70,20 +71,21 @@ void Jugador::mover() {
 }
 
 
-bool Jugador::puedeMoverse(char elemento) {
-    if (elemento == 'X') {
-        return false;
+bool Jugador::puedeMoverse(Mazmorra& mazmorra, int nuevoX, int nuevoY) {
+    if (nuevoX < 0 || nuevoX >= mazmorra.getFilas() || nuevoY < 0 || nuevoY >= mazmorra.getColumnas()) {
+        return false; // Fuera de límites
     }
-    
-    if (elemento == 'P' && llaves <= 0) {
-        return false;
+    char elemento = mazmorra.obtenerElemento(nuevoX, nuevoY);
+    if (elemento == '-') {
+        return true; // Espacio vacío
     }
-    
-    if (elemento == 'Y' && llavesJefe <= 0) {
-        return false;
+    else if ((elemento == 'p' || elemento == 'P') && llaves > 0) {
+        return true; // Puerta
     }
-    
-    return true;
+    else if ((elemento == 'y' || elemento == 'Y') && llavesJefe > 0) {
+        return true; // Puerta Jefe
+    }
+    return false; // No se puede mover
 }
 
 void Jugador::atacar() {

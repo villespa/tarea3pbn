@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<string>
+class Mazmorra;
 
 class Jugador
 {
@@ -46,7 +47,7 @@ public:
 
     //acciones
     void mover();
-    bool puedeMoverse(char elemento);
+    bool puedeMoverse(Mazmorra& mazmorra, int nuevoX, int nuevoY);
     void usarLlave();
     void usarBomba();
     void usarHabilidad();

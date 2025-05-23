@@ -26,7 +26,7 @@ void Mazmorra::mostrarMapa() const {
 char Mazmorra::obtenerElemento(int x, int y) const {
     if (x >= 0 && x < filas && y >= 0 && y < columnas)
         return mapa[x][y];
-    return '?'; // fuera de límites
+    return '0'; // fuera de límites
 }
 
 void Mazmorra::modificarElemento(int x, int y, char nuevoValor) {
@@ -53,32 +53,28 @@ std::pair<int,int> Mazmorra::posicionInicialJugador() {
     return std::make_pair(0, 0); // Si no se encuentra la posición inicial
 }
 
-void Mazmorra::moverJugador(Jugador& jugador, std::string direccion) {
+
+std::pair<int, int> Mazmorra::dondeSeMueveJugador(Jugador& jugador) {
     int nuevoX = jugador.getX();
     int nuevoY = jugador.getY();
-    std::string direccionJugador = jugador.getDireccion();
-    
-    if (direccionJugador != direccion) {
-        jugador.setDireccion(direccion);
-        return;
-    }
-        
+    std::string direccion = jugador.getDireccion();
 
     if (direccion == "arriba") {
-        nuevoX--;
-
-    } 
-    else if (direccion == "abajo") {
-        nuevoX++;
-    } 
-    else if (direccion == "izquierda") {
         nuevoY--;
     } 
-    else if (direccion == "derecha") {
+    else if (direccion == "abajo") {
         nuevoY++;
+    } 
+    else if (direccion == "izquierda") {
+        nuevoX--;
+    } 
+    else if (direccion == "derecha") {
+        nuevoX++;
     } 
     else {
         std::cout << "Dirección no válida." << std::endl;
-        return;
+        return std::make_pair(jugador.getX(), jugador.getY());
     }
+
+    return std::make_pair(nuevoX, nuevoY);
 }
