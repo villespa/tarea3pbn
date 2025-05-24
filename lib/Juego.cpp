@@ -132,7 +132,9 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
             // 
 
             if (jugador.puedeMoverse(mazmorraElegida, futuraPos.first, futuraPos.second)) {
+                mazmorraElegida.modificarElemento(jugador.getY(), jugador.getX(), '-');
                 jugador.mover();
+                mazmorraElegida.modificarElemento(jugador.getY(), jugador.getX(), 'L');
                 std::cout << "Jugador se ha movido a la posición: (" << jugador.getX() << ", " << jugador.getY() << ")" << std::endl;
             } else {
                 std::cout << "Movimiento no permitido." << std::endl;
