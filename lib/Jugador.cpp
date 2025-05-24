@@ -53,7 +53,34 @@ Jugador::Jugador(int x, int y) : x(x), y(y), vida(100), dano(20), direccion("arr
     haGanado = false;
 }
 
-void Jugador::setDireccion(std::string direccion) {
+void Jugador::setDireccion() {
+
+    std::cout << "=== MENU DE DIRECCIONES ===" << std::endl;
+    std::cout << "1. Arriba" << std::endl;
+    std::cout << "2. Abajo" << std::endl;
+    std::cout << "3. Izquierda" << std::endl;
+    std::cout << "4. Derecha" << std::endl;
+    std::cout << "Ingrese la dirección (1-4): ";
+    int opcion;
+    std::cin >> opcion;
+    switch (opcion) {
+        case 1:
+            direccion = "arriba";
+            break;
+        case 2:
+            direccion = "abajo";
+            break;
+        case 3:
+            direccion = "izquierda";
+            break;
+        case 4:
+            direccion = "derecha";
+            break;
+        default:
+            std::cout << "Opción invalida. Se mantien la direccion actual" << std::endl;
+            return; // Salir sin cambiar la dirección
+    }
+
     this->direccion = direccion;
 }
 

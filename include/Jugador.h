@@ -37,7 +37,7 @@ public:
     void setX(int x);
     void setY(int y);
     void cambiarVida(int vida);
-    void setDireccion(std::string direccion);
+    void setDireccion();
 
     //getters
     int getX();

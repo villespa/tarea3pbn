@@ -145,10 +145,8 @@ int Juego::mainLoop(Jugador& jugador, Mazmorra& mazmorraElegida) {
         }
 
         case 'd': {
-            std::string nuevaDireccion;
-            std::cout << "Ingrese la nueva dirección (arriba, abajo, izquierda, derecha): ";
-            std::cin >> nuevaDireccion;
-            jugador.setDireccion(nuevaDireccion);
+
+            jugador.setDireccion();
             std::cout << "Dirección cambiada a: " << jugador.getDireccion() << std::endl;
             break;
         }
